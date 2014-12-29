@@ -14,17 +14,17 @@
   with_items:   DEPENDENCY_PACKAGES_APT
   when:         ansible_pkg_mgr == 'apt'
 
-- name:         install dependencies - rpm + python 2.6
+- name:         install dependencies - rpm + python 2.6 (EL 6)
   yum:
     name:               '{{ item }}'
     state:              latest
   with_items:   DEPENDENCY_PACKAGES_RPM
-  when:         ansible_pkg_mgr == 'yum' and ansible_python_version.startswith('2.6')
+  when:         ansible_pkg_mgr == 'yum' and ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 6
 
-- name:         install dependencies - rpm + python 2.7
+- name:         install dependencies - rpm + python 2.7 (EL 7)
   yum:
     name:               '{{ item }}'
     state:              latest
-  with_items:   DEPENDENCY_PACKAGES_RPM
-  when:         ansible_pkg_mgr == 'yum' and ansible_python_version.startswith('2.7')
+  with_items:   DEPENDENCY_PACKAGES_RPM_RHEL7
+  when:         ansible_pkg_mgr == 'yum' and ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 7
 

@@ -37,6 +37,14 @@ DEPENDENCY_PACKAGES_RPM:
 - sqlite
 - rsync
 
+DEPENDENCY_PACKAGES_RPM_RHEL7:
+- python-setuptools
+#- python-simplejson # removed from rhel7 
+- python-pillow
+- MySQL-python
+- sqlite
+- rsync
+
 SEAFILE_ENVIRONMENT:
   LD_LIBRARY_PATH: >
     {{ seafile_latest_dir }}/seafile/lib/:{{ seafile_latest_dir }}/seafile/lib64:${LD_LIBRARY_PATH}
