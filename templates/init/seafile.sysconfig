@@ -1,5 +1,7 @@
 # {{ ansible_managed }}
 
+# not used in case of systemd - see service file
+
 user={{ seafile_user }}
 seafile_dir={{ seafile_org_dir }}
 script_path={{ seafile_latest_dir }}

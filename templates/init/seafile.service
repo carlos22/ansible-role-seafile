@@ -1,0 +1,16 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description=Seafile
+After=network.target mysql.service
+
+[Service]
+Type=oneshot
+ExecStart={{ seafile_latest_dir }}/seafile.sh start
+ExecStop={{ seafile_latest_dir }}/seafile.sh stop
+RemainAfterExit=yes
+User={{ seafile_user }}
+Group={{ seafile_user }}
+
+[Install]
+WantedBy=multi-user.target
