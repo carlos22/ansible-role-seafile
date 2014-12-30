@@ -12,8 +12,9 @@ ExecStart={{ seafile_latest_dir }}/seahub.sh start{% if seafile_fastcgi_enabled 
 ExecStop={{ seafile_latest_dir }}/seahub.sh stop
 User={{ seafile_user }}
 Group={{ seafile_user }}
-Type=oneshot
-RemainAfterExit=yes
+Type=forking
+LimitMEMLOCK=infinity
+LimitNOFILE=30000
 
 [Install]
 WantedBy=multi-user.target

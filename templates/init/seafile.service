@@ -5,12 +5,13 @@ Description=Seafile
 After=network.target mysql.service
 
 [Service]
-Type=oneshot
 ExecStart={{ seafile_latest_dir }}/seafile.sh start
 ExecStop={{ seafile_latest_dir }}/seafile.sh stop
-RemainAfterExit=yes
+Type=forking
 User={{ seafile_user }}
 Group={{ seafile_user }}
+LimitMEMLOCK=infinity
+LimitNOFILE=30000
 
 [Install]
 WantedBy=multi-user.target
